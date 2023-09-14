@@ -1,6 +1,6 @@
 package br.com.alura.buscaviacep;
 import br.com.alura.buscaviacep.complementos.GeradorDeArquivo;
-import br.com.alura.buscaviacep.principal.Pesquisar;
+import br.com.alura.buscaviacep.principal.PesquisarCEP;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class AppBuscaViaCEP {
     public static void main(String[] args) throws IOException {
         Scanner leitura = new Scanner(System.in);
-        Pesquisar pesquisar = new Pesquisar();
+        PesquisarCEP pesquisarCEP = new PesquisarCEP();
 
         String opcao = "";
         System.out.println("\n=================== APP - BUSCA DE FILMES E SERIES =========================");
@@ -30,8 +30,8 @@ public class AppBuscaViaCEP {
 
             opcao = leitura.nextLine();
             switch (opcao) {
-                case "1" -> pesquisar.realizarBusca();
-                case "2" -> pesquisar.listaPesquisados();
+                case "1" -> pesquisarCEP.realizarBusca();
+                case "2" -> pesquisarCEP.listaPesquisados();
                 case "3" -> gerarArquivo(1);
                 case "4" -> gerarArquivo(2);
                 case "0" -> System.out.println("\nSaindo do sistema...");
@@ -39,7 +39,7 @@ public class AppBuscaViaCEP {
             }
         }
         System.out.println("Obrigado por utilizar o APP - Busca de Filmes e Séries");
-        pesquisar.listaPesquisados();
+        pesquisarCEP.listaPesquisados();
     }
     public static void gerarArquivo(int tipo) throws IOException {
         GeradorDeArquivo meuArquivo = new GeradorDeArquivo();

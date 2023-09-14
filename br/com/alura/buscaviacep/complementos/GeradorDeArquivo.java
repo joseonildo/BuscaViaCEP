@@ -1,7 +1,7 @@
 package br.com.alura.buscaviacep.complementos;
 
-import br.com.alura.buscaviacep.modelos.Titulo;
-import br.com.alura.buscaviacep.principal.Pesquisar;
+import br.com.alura.buscaviacep.modelos.Endereco;
+import br.com.alura.buscaviacep.principal.PesquisarCEP;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -14,7 +14,7 @@ public class GeradorDeArquivo {
     Scanner leitura = new Scanner(System.in);
 
         public void gravarArquivo(int tipo) throws IOException {
-        var pesquisa = new Pesquisar();
+        var pesquisa = new PesquisarCEP();
         var listaPesquisados = pesquisa.getListaPesquisados();
         File NomeArquivo;
 
@@ -74,7 +74,7 @@ public class GeradorDeArquivo {
             if (tipo == 1) {
                 FileWriter arquivo = new FileWriter(NomeArquivo);
 
-                for (Titulo item : listaPesquisados) {
+                for (Endereco item : listaPesquisados) {
                     arquivo.write(item.toString() + "\n");
                 }
                 System.out.println("\nArquivo " + NomeArquivo + " gerado com sucesso!");

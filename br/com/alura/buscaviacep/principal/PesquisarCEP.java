@@ -1,8 +1,8 @@
 package br.com.alura.buscaviacep.principal;
 
 import br.com.alura.buscaviacep.excecoes.ErroNaPesquisaException;
-import br.com.alura.buscaviacep.modelos.Titulo;
-import br.com.alura.buscaviacep.modelos.TituloJson;
+import br.com.alura.buscaviacep.modelos.Endereco;
+import br.com.alura.buscaviacep.modelos.EnderecoJson;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
@@ -16,11 +16,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Pesquisar {
+public class PesquisarCEP {
     Scanner leitura = new Scanner(System.in);
-    public static List<Titulo> listaPesquisados = new ArrayList<>();
+    public static List<Endereco> listaPesquisados = new ArrayList<>();
 
-    public List<Titulo> getListaPesquisados() {
+    public List<Endereco> getListaPesquisados() {
         return listaPesquisados;
     }
 
@@ -52,15 +52,15 @@ public class Pesquisar {
                     String json = response.body();
                     //System.out.println(response.body());
 
-                    TituloJson meuTituloJson = gson.fromJson(json, TituloJson.class);
-                    Titulo meuTituloFinal = new Titulo(meuTituloJson);
+                    EnderecoJson meuEnderecoJson = gson.fromJson(json, EnderecoJson.class);
+                    Endereco meuEnderecoFinal = new Endereco(meuEnderecoJson);
 
-                    if (meuTituloFinal.getErro()) {
+                    if (meuEnderecoFinal.getErro()) {
                         throw new ErroNaPesquisaException("CEP Iválido, verifique o número digitado!");
                     }
 
-                    System.out.println("\n" + meuTituloFinal);
-                    listaPesquisados.add(meuTituloFinal);
+                    System.out.println("\n" + meuEnderecoFinal);
+                    listaPesquisados.add(meuEnderecoFinal);
 
                 } catch (IllegalStateException | JsonSyntaxException erro) {
                     System.out.println("\nOOCORREU UM ERRO NA PESQUISA!");
@@ -93,7 +93,7 @@ public class Pesquisar {
         } else {
             System.out.println("\nLista de CEPs pesquisados:\n");
 
-            for (Titulo item : listaPesquisados) {
+            for (Endereco item : listaPesquisados) {
                 System.out.println(item);
             }
         }
