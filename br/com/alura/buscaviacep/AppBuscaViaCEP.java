@@ -11,7 +11,7 @@ public class AppBuscaViaCEP {
         PesquisarCEP pesquisarCEP = new PesquisarCEP();
 
         String opcao = "";
-        System.out.println("\n=================== APP - BUSCA DE FILMES E SERIES =========================");
+        System.out.println("\n=============== APP - BuscaViaCEP - Busca de Endereços pelo CEP =====================");
 
         while (!opcao.equalsIgnoreCase("0")) {
             System.out.print("""
